@@ -167,7 +167,7 @@ const updateBlog = async (req, res) => {
         const { id } = req.params;
         const { title, content, excerpt, thumbnail, category, tags, status } = req.body;
 
-        // 🧠 1️⃣ ID Validation
+       
         if (!id || !mongoose.Types.ObjectId.isValid(id)) {
             return res.status(400).json({
                 success: false,
@@ -175,7 +175,6 @@ const updateBlog = async (req, res) => {
             });
         }
 
-        // 🧠 2️⃣ Find Blog
         const blog = await Blog.findById(id);
         if (!blog) {
             return res.status(404).json({
@@ -184,7 +183,7 @@ const updateBlog = async (req, res) => {
             });
         }
 
-        // 🧠 3️⃣ Category Validation (only if provided)
+      
         if (category) {
             const categoryExists = await Category.findById(category);
             if (!categoryExists) {
@@ -195,7 +194,7 @@ const updateBlog = async (req, res) => {
             }
         }
 
-        // 🧠 4️⃣ Prepare update data (only provided fields)
+   
         const updatedData = {
             title,
             content,
