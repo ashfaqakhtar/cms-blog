@@ -45,7 +45,6 @@ const createCategory = async (req, res) => {
 
 }
 
-
 const getAllCategory = async (req, res) => {
     const { page, limit, search } = req.query;
 
